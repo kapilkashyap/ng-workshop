@@ -48,16 +48,18 @@ module.exports = function(grunt) {
             options: {
                 livereload: LIVERELOAD_PORT
             },
+            html: {
+            	files: ["app/**/*.html"]
+            },
             scripts: {
-                files: ["app/**/*.html", "app/scripts/**/*.js"],
+                files: ["app/scripts/**/*.js"],
                 tasks: ["concat"]
             },
             css: {
                 files: ["app/styles/*.css"]
             },
             test: {
-                files: ["test/**/*"],
-                tasks: [/*"protractor:e2e"*/]
+                files: ["test/**/*"]
             }
         },
         karma: {
