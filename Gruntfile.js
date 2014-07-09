@@ -36,7 +36,7 @@ module.exports = function(grunt) {
             	files: ["app/**/*.html"]
             },
             scripts: {
-                files: ["app/scripts/**/*.js"],
+                files: ["app/app.js", "app/scripts/**/*.js"],
                 tasks: ["concat"]
             },
             css: {
