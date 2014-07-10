@@ -1,3 +1,41 @@
-body {
-	background-color: #808080;
+body.page-welcome, body.page-index, body.page-agenda {
+	border: 5px solid #CCCCCC;
+	padding: 10px;
+}
+.text-centered {
+	text-align: center;
+}
+a, div.reset {
+	color: #808080;
+	font-family: monospace;
+	text-decoration: none;
+}
+a:hover, div.reset:hover {
+	color: #ff0000;
+	cursor: pointer;
+}
+div.text2em {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+div.displayBlock {
+	display: inline-block;
+	vertical-align: top;
+}
+div.floatRight {
+	float: right;
+}
+div.paddingL20px {
+	padding-left: 20px;
+}
+div.marginL100px {
+	margin-left: 100px;
+}
+.todo div {
+	margin: 5px 0px 5px 10px;
+	font-size: 1.3em;
+}
+.todo div.description {
+	font-size: 14px;
 }

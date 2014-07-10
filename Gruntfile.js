@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         },
         open: {
             server: {
-                path: 'http://localhost:' + PORT + '/index.html'
+                path: 'http://localhost:' + PORT + '/welcome.html'
             }
         },
         watch: {

@@ -1,0 +1,71 @@
+<!doctype>
+<html>
+	<head>
+		<title>Agenda...</title>
+		<link rel="stylesheet" href="styles/ng-workshop.css">
+	</head>
+	<body class="page-agenda" data-ng-app="ngWorkshopAgenda" data-ng-controller="ngWorkshopAgendaController">
+		<div class="text2em displayBlock">Agenda:</div>
+		<div class="reset displayBlock floatRight" data-ng-click="reset()">Reset</div>
+		<br/>
+		<div class="todo displayBlock">
+			<div data-ng-repeat="todo in todos">
+				<input class="checkbox" type="checkbox"
+					data-ng-model="todo.selected"
+					data-ng-click="todoClicked(todo)"/>{{todo.item}}
+				<div class="paddingL20px description" data-ng-if="todo.desc">{{todo.desc}}</div>
+			</div>
+		</div>
+		<div class="displayBlock marginL100px" data-ng-if="workshopCompleted()">
+			<img alt="" src="images/clapping.gif">
+		</div>
+		
+		<script src="components/angular/angular.js"></script>
+		<script type="text/javascript">
+			angular.module("ngWorkshopAgenda", [])
+			.controller("ngWorkshopAgendaController", ["$scope", function ngWorkshopAgendaController($scope) {
+				$scope.prefix = "ngWorkshop.agenda.";
+				$scope.todos = JSON.parse(localStorage.getItem($scope.prefix + "todos")) || [
+					{item: "Workshop Setup", selected: false, desc: "Node + Grunt + Bower + Git clone"},
+					{item: "AngularJS Features", selected: false, desc: "Why AngularJS? What it brings to the plate?"},
+					{item: "Getting Started", selected: false},
+					{item: "Data Binding, Filters & Directives", selected: false},
+					{item: "Scope, Controllers & Views", selected: false},
+					{item: "Module, Routes & Factories", selected: false},
+					{item: "Assignment", selected: false},
+					{item: "QnA", selected: false}
+				];
+				
+				$scope.todoClicked = function(item) {
+					item.selected = !item.selected; 
+					localStorage.setItem($scope.prefix + "todos", JSON.stringify($scope.todos));
+				};
+				
+				$scope.reset = function() {
+					localStorage.removeItem($scope.prefix + "todos");
+					location.reload();
+				};
+				
+				$scope.workshopCompleted = function() {
+					for(var index = 0; index < $scope.todos.length; index++) {
+						if(!$scope.todos[index].selected) {
+							return false;
+						}
+					}
+					return true;
+				};
+			}]);
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
